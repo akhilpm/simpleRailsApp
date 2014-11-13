@@ -1,0 +1,32 @@
+<% if notice %>
+<p id="notice" ><%= notice %></p>
+<% end %>
+
+<%= javascript_include_tag "jquery.cycle.lite" %>
+    <script type="text/javascript">
+      $(document).ready(function(){
+  	    $('#slideshow_images').cycle({ 
+  	      fx:    'fade',
+		  pause:  1,
+		  speed: 1500,
+		  delay:  -2000  
+  	    });
+      });
+    </script>
+  </head>
+  <body><br>
+    <div id="slideshow_images">
+     <!-- <img src="slide-1.jpg" border="0" /> -->
+	  <%= image_tag "slide-1.jpg" %>
+	  <%= image_tag "slide-2.jpg" %>
+      <%= image_tag "slide-3.jpg" %>
+      <%= image_tag "slide-4.jpg" %>
+      <%= image_tag "slide-5.jpg" %>
+    </div>
+<br><br>
+
+Here you can see how the primary button is defined: using a white font color and a gradient blue background (“blue” –> “blueDark”). And you can also see the blue value is hard coded into the patterns.less file – there’s no variable in variables.less called “$primaryButtonColor” or something similar, although there is a comment indicating this variable might be added soon.
+
+To change the form buttons to be red instead, we need to copy/paste this Less code out into our application’s Less file (origami_hub.css.less) and make the desired changes:
+<br><br><br><br><br><br>
+

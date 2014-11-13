@@ -1,0 +1,58 @@
+1.rails new manhood
+
+2.rails generate scaffold Package title:string description:text image_url:string price:decimal 
+
+3.rake db:migrate
+
+4.rake test
+
+5.rake routes /* to get a listing of all the routes */
+
+6.to update an existing schema - "rails generate migration add_quantity_to_line_item quantity:integer"
+
+	add_XXX_to_TABLENAME is the syntax of method call where you can substitute the name of the new colunmn in place of XXX
+
+ for each migration that you need to apply you have to have the code in /db/migrate/211298932901_method.rb file.
+ in this case it should be in /db/migrate/211298932901_add_quantity_to_line_item.rb. Rails will automatically generate a little bit of coding for you in this directory.But if you want to do something complex then you need to specify it in this file.
+
+7.to start sqlite3 db "sqlite3 -line db/development.sqlite3"
+
+
+VALIDATIONS - at manhood/app/models/package.rb
+
+LAYOUT - in app/views/layout/application.html.erb
+
+MAIN CSS - /public/stylesheets/manhood.css
+
+IMAGES - /public/images
+
+modification to add test data @ :/test/controllers/package_controller_test.rb
+
+patch :update, id: @package, package: { description: @package.description, image_url: @package.image_url, price: @package.price, title: @package.title }
+
+bootsrap installation
+	install less -> gem install less-rails
+	install rubyracer -> gem install therubyracer //a JS engine 
+	gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+	then run bundle install
+	run bootstrap generator -> rails generate bootstrap:install less
+
+	rest refer here https://github.com/seyhunak/twitter-bootstrap-rails#installing-twitter-bootstrap-rails-generators-usage-and-more
+
+============to list the packages================================
+<% @packages.each do |package| %>
+	<div class="entry" >
+		<%= image_tag(package.image_url) %>
+		<h3><%= package.title %></h3>
+		<%=sanitize package.description %>
+		<div class="price_line" >
+			<span class="price" ><%= number_to_currency(package.price) %></span>
+		</div>
+		<p></p>
+	</div>
+<% end %>
+
+
+scaffold.css.scss modification
+
+
